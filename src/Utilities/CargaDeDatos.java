@@ -98,7 +98,7 @@ public class CargaDeDatos {
     static final Pregunta pregunta6 = new Pregunta("Que plan uso", new RespuestaPosible[]{respuestaPosible13, respuestaPosible14, respuestaPosible15, respuestaPosible16, respuestaPosible3});
     static final Pregunta pregunta7 = new Pregunta("Solicito prestamo en los ultimos 3 meses", new RespuestaPosible[]{respuestaPosible7, respuestaPosible8});
     static final Pregunta pregunta8 = new Pregunta("Estimado prestamo", new RespuestaPosible[]{respuestaPosible9, respuestaPosible11, respuestaPosible12});
-    static final Pregunta pregunta9 = new Pregunta("Cuantas cuotas", new RespuestaPosible[]{respuestaPosible13, respuestaPosible14, respuestaPosible15, respuestaPosible16, respuestaPosible3});
+    static final Pregunta pregunta9 = new Pregunta("Cuantas cuotas", new RespuestaPosible[]{respuestaPosible13, respuestaPosible14, respuestaPosible15, respuestaPosible16});
 
     //Encuestas
     static final Encuesta encuesta1
