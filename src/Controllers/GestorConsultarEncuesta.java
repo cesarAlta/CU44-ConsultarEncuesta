@@ -7,7 +7,6 @@ package Controllers;
 import Models.CambioEstado;
 import Models.Encuesta;
 import Models.Llamada;
-import Models.RespuestaDeCliente;
 import Models.RespuestaPosible;
 import Utilities.CargaDeDatos;
 import Views.PantallaEncuestaController;
@@ -19,8 +18,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import javafx.scene.control.Alert;
 
 /**
  *
@@ -30,6 +27,7 @@ public class GestorConsultarEncuesta {
 
     private final PantallaEncuestaController controller;
     private HashMap<Llamada, CambioEstado> hashMapLLamadaUltimoCe;
+    private List<String> mostrarTodosLosDatosLlamada;
 
     public GestorConsultarEncuesta(PantallaEncuestaController controller) {
         this.controller = controller;
@@ -37,7 +35,6 @@ public class GestorConsultarEncuesta {
 
     public void opConsultarEncuesta() {
         controller.solicitarSeleccionDePeriodo();
-
     }
 
     public void tomarSeleccionFecaInicioPerioso(LocalDate fechaInicioPeriodo, LocalDate fechaFinPeriodo) {
@@ -64,36 +61,29 @@ public class GestorConsultarEncuesta {
                 }
             }
         }
-
         controller.solicitarSeleccionLlamada(hasMostrarLLamadas);
     }
-
-    private Encuesta encuestaLlamadaSeleccionada = null;
-    private List<String> mostrarTodosLosDatosLlamada;
 
     public void tomarSeleccionLlamada(Llamada llamadaSel) {
 
         mostrarTodosLosDatosLlamada = new ArrayList<>();
         String[] datosLlamada = obtenerDatosDeLallamada(llamadaSel);
+        //se obtiene las resp posibles seleccionada por el clietne asi se puede buscar las llamadas 
         List<RespuestaPosible> respPosibleCliSeleccionada = obtenerRespuestaDeClienteDeLlamadaSeleccionada(llamadaSel);
-        HashMap<String, String> mapPregYResp = obtenerEncuestaDeLlamadaSel(respPosibleCliSeleccionada);
-
+        
+        //Se agrean DATOS DE LA LLAMADA:  nombre del cliente, estado de la llamada, duracion de la llamada
         mostrarTodosLosDatosLlamada.add(datosLlamada[0]);
         mostrarTodosLosDatosLlamada.add(datosLlamada[1]);
         mostrarTodosLosDatosLlamada.add(datosLlamada[2]);
-        mostrarTodosLosDatosLlamada.add(encuestaLlamadaSeleccionada.getDescripcion());
-
-        for (Map.Entry<String, String> entry : mapPregYResp.entrySet()) {
-            String res = "¿ " + entry.getKey() + "? " + "-->" + entry.getValue();
-            System.out.println(res);
-
-            mostrarTodosLosDatosLlamada.add(res);
+        
+        //Se agregan DATOS DE LA ENCUESTA: nombre, preguntas y respuestas
+        for (String datosEnc : obtenerEncuestaDeLlamadaSel(respPosibleCliSeleccionada)) {
+            mostrarTodosLosDatosLlamada.add(datosEnc);
         }
         controller.mostrarDatosDeLaEncuesta(mostrarTodosLosDatosLlamada);
     }
 
     public String[] obtenerDatosDeLallamada(Llamada llamadaSel) {
-
         CambioEstado ultimoEstado = hashMapLLamadaUltimoCe.get(llamadaSel);
         return llamadaSel.getDatosParaConsultaDeEncuesta(ultimoEstado);
     }
@@ -106,30 +96,25 @@ public class GestorConsultarEncuesta {
         return llamadaSel.getNombreClienteDeLlamada();
     }
 
-    private String obtenerEstadoActualDeLLamadaSel(Llamada llamadaSel) {
-        return llamadaSel.getEstadoActual();
-    }
+    private List<String> obtenerEncuestaDeLlamadaSel(List<RespuestaPosible> respPosibleCliSeleccionada) {
 
-    private String obtenerDuracionDeLLamadaSel(Llamada llamdasel) {
-        return " " + llamdasel.getDuracion();
-    }
-
-    private HashMap<String, String> obtenerEncuestaDeLlamadaSel(List<RespuestaPosible> respPosibleCliSeleccionada) {
-
+        //cargo las encuestas
         List<Encuesta> encuestas = CargaDeDatos.getEncuestas();
-        for (RespuestaPosible rp : respPosibleCliSeleccionada) {
-            for (Encuesta enc : encuestas) {
-                if (enc.esEncustaDeCliente(rp)) {
-                    encuestaLlamadaSeleccionada = enc;
-                }
+        //obtengo datos de la encuesta
+        List<String> datosEncuesta = new ArrayList<>();
+
+        for (Encuesta enc : encuestas) {
+            datosEncuesta = enc.getDescripcionEncuesta(respPosibleCliSeleccionada);
+            if (!datosEncuesta.isEmpty()) {
+                return datosEncuesta;
             }
         }
-        HashMap<String, String> descEncuestaLlamadaSel = encuestaLlamadaSeleccionada.getDescripcionEncuesta(respPosibleCliSeleccionada);
 
-        return descEncuestaLlamadaSel;
+        return datosEncuesta;
     }
 
     public void generarCSV() {
+        //genero ruta del archivo
         String rutaArchivo = "F:/3-DSI-2023/impCU44/CU44-ConsultarEncuesta/Csvs/archivo.csv";
 
         try (FileWriter fileWriter = new FileWriter(rutaArchivo); BufferedWriter bufferedWriter = new BufferedWriter(fileWriter); PrintWriter printWriter = new PrintWriter(bufferedWriter)) {
@@ -144,15 +129,13 @@ public class GestorConsultarEncuesta {
                 printWriter.println(mostrarTodosLosDatosLlamada.get(i));
 
             }
-            
-            controller.informarAvisoDeGeneracionExitosa();
 
+            controller.informarAvisoDeGeneracionExitosa();
 
         } catch (IOException e) {
             System.out.println("Error al generar el archivo CSV: " + e.getMessage());
             controller.mostrarAlertaErrorCsv("Error al generar el archivo CSV: " + e.getMessage());
         }
-        
 
     }
 
