@@ -27,7 +27,7 @@ public class GestorConsultarEncuesta {
 
     private final PantallaEncuestaController controller;
     private HashMap<Llamada, CambioEstado> hashMapLLamadaUltimoCe;
-    private List<String> mostrarTodosLosDatosLlamada;
+    private List<String> datosParamostrarLlamadaYEnncuesta;
 
     public GestorConsultarEncuesta(PantallaEncuestaController controller) {
         this.controller = controller;
@@ -66,21 +66,21 @@ public class GestorConsultarEncuesta {
 
     public void tomarSeleccionLlamada(Llamada llamadaSel) {
 
-        mostrarTodosLosDatosLlamada = new ArrayList<>();
+        datosParamostrarLlamadaYEnncuesta = new ArrayList<>();
         String[] datosLlamada = obtenerDatosDeLallamada(llamadaSel);
         //se obtiene las resp posibles seleccionada por el clietne asi se puede buscar las llamadas 
         List<RespuestaPosible> respPosibleCliSeleccionada = obtenerRespuestaDeClienteDeLlamadaSeleccionada(llamadaSel);
         
         //Se agrean DATOS DE LA LLAMADA:  nombre del cliente, estado de la llamada, duracion de la llamada
-        mostrarTodosLosDatosLlamada.add(datosLlamada[0]);
-        mostrarTodosLosDatosLlamada.add(datosLlamada[1]);
-        mostrarTodosLosDatosLlamada.add(datosLlamada[2]);
+        datosParamostrarLlamadaYEnncuesta.add(datosLlamada[0]);
+        datosParamostrarLlamadaYEnncuesta.add(datosLlamada[1]);
+        datosParamostrarLlamadaYEnncuesta.add(datosLlamada[2]);
         
         //Se agregan DATOS DE LA ENCUESTA: nombre, preguntas y respuestas
         for (String datosEnc : obtenerEncuestaDeLlamadaSel(respPosibleCliSeleccionada)) {
-            mostrarTodosLosDatosLlamada.add(datosEnc);
+            datosParamostrarLlamadaYEnncuesta.add(datosEnc);
         }
-        controller.mostrarDatosDeLaEncuesta(mostrarTodosLosDatosLlamada);
+        controller.mostrarDatosDeLaEncuesta(datosParamostrarLlamadaYEnncuesta);
     }
 
     public String[] obtenerDatosDeLallamada(Llamada llamadaSel) {
@@ -121,12 +121,12 @@ public class GestorConsultarEncuesta {
 
             // Escribir encabezados: nombre, estado actual de la llamda, duracion de lla llamada
             printWriter.println(
-                    "Cliente: " + mostrarTodosLosDatosLlamada.get(0) + ". Llamada: " + mostrarTodosLosDatosLlamada.get(1) + ". Duracion:" + mostrarTodosLosDatosLlamada.get(2));
+                    "Cliente: " + datosParamostrarLlamadaYEnncuesta.get(0) + ". Llamada: " + datosParamostrarLlamadaYEnncuesta.get(1) + ". Duracion:" + datosParamostrarLlamadaYEnncuesta.get(2));
 
             // Escribir datos pregunta respuesta
-            printWriter.println(mostrarTodosLosDatosLlamada.get(3));
-            for (int i = 4; i < mostrarTodosLosDatosLlamada.size(); i++) {
-                printWriter.println(mostrarTodosLosDatosLlamada.get(i));
+            printWriter.println(datosParamostrarLlamadaYEnncuesta.get(3));
+            for (int i = 4; i < datosParamostrarLlamadaYEnncuesta.size(); i++) {
+                printWriter.println(datosParamostrarLlamadaYEnncuesta.get(i));
 
             }
 
