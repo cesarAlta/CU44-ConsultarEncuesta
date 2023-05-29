@@ -65,9 +65,17 @@ public class CargaDeDatos {
     static final CambioEstado cambioEstado29 = new CambioEstado(LocalDateTime.parse("2023-05-14T09:30:30"), estado2);
 
     //Cliente
-    static final Cliente cliente1 = new Cliente(112345678, "Pedro Diaz", "351333111122");
-    static final Cliente cliente2 = new Cliente(222345678, "Lorenzo Rodruiguez", "351333111122");
-    static final Cliente cliente3 = new Cliente(332345678, "Diego Lamas", "351333111122");
+    static final Cliente cliente1 = new Cliente(112345678, "Pedro1 Diaz", "351333111122");
+    static final Cliente cliente2 = new Cliente(222345678, "Pedro2 Rodruiguez", "351333111122");
+    static final Cliente cliente3 = new Cliente(332345678, "Pedro3 Lamas", "351333111122");    
+    static final Cliente cliente4 = new Cliente(332345678, "Pedro4 Lamas", "351333111122");
+        static final Cliente cliente5 = new Cliente(332345678, "Pedro5 Lamas", "351333111122");
+            static final Cliente cliente6 = new Cliente(332345678, "Pedro6 Lamas", "351333111122");
+                static final Cliente cliente7 = new Cliente(332345678, "Pedro7 Lamas", "351333111122");             
+                static final Cliente cliente8 = new Cliente(332345678, "PRUEBA", "351333111122");
+
+
+
 
     //RespuestaPosible
     ////calidad atencion
@@ -78,8 +86,18 @@ public class CargaDeDatos {
     static final RespuestaPosible respuestaPosible5 = new RespuestaPosible("Mala", 5);
     static final RespuestaPosible respuestaPosible6 = new RespuestaPosible("Muy mala", 6);
     ////Respuestas para si y no
-    static final RespuestaPosible respuestaPosible7 = new RespuestaPosible("Si", 1);
-    static final RespuestaPosible respuestaPosible8 = new RespuestaPosible("No", 2);
+    static final RespuestaPosible respuestaPosible7 = new RespuestaPosible("Si recomienda el servicio", 1);
+    static final RespuestaPosible respuestaPosible8 = new RespuestaPosible("No recomientda el servicio", 2);
+    static final RespuestaPosible respuestaPosible21 = new RespuestaPosible("No soluciono ", 2);
+        static final RespuestaPosible respuestaPosible22 = new RespuestaPosible("Si soluciono", 1);
+    static final RespuestaPosible respuestaPosible19 = new RespuestaPosible("No recomendo ", 2);   
+    static final RespuestaPosible respuestaPosible20 = new RespuestaPosible("Si recomendo ", 2);
+    
+        static final RespuestaPosible respuestaPosible30 = new RespuestaPosible("No brindo  ", 2);   
+    static final RespuestaPosible respuestaPosible31 = new RespuestaPosible("Si brindo", 2);
+
+    static final RespuestaPosible respuestaPosible24 = new RespuestaPosible("Si obtuvo prestamo", 1);
+    static final RespuestaPosible respuestaPosible25 = new RespuestaPosible("No obtuvo prestamo", 2);
 
     static final RespuestaPosible respuestaPosible9 = new RespuestaPosible("mayor a 100", 1);
     static final RespuestaPosible respuestaPosible11 = new RespuestaPosible("mayor a 200", 2);
@@ -87,16 +105,23 @@ public class CargaDeDatos {
     static final RespuestaPosible respuestaPosible13 = new RespuestaPosible("3", 3);
     static final RespuestaPosible respuestaPosible14 = new RespuestaPosible("6", 6);
     static final RespuestaPosible respuestaPosible15 = new RespuestaPosible("9", 9);
-    static final RespuestaPosible respuestaPosible16 = new RespuestaPosible("12", 1);
+    static final RespuestaPosible respuestaPosible16 = new RespuestaPosible("12", 1);  
+        static final RespuestaPosible respuestaPosible41 = new RespuestaPosible("ahora 3", 1);
+
+            static final RespuestaPosible respuestaPosible42 = new RespuestaPosible("ahora 6", 1);
+    static final RespuestaPosible respuestaPosible43 = new RespuestaPosible("ahora 12", 1);
+    static final RespuestaPosible respuestaPosible44 = new RespuestaPosible("1 sin interes", 1);
+
+
 
     //Preguntas
     static final Pregunta pregunta1 = new Pregunta("Calidad de la atencion", new RespuestaPosible[]{respuestaPosible1, respuestaPosible2, respuestaPosible3, respuestaPosible4, respuestaPosible5, respuestaPosible6});
     static final Pregunta pregunta2 = new Pregunta("Recomendar el servicio", new RespuestaPosible[]{respuestaPosible7, respuestaPosible8});
-    static final Pregunta pregunta3 = new Pregunta("Soluciono la consulta", new RespuestaPosible[]{respuestaPosible7, respuestaPosible8});
-    static final Pregunta pregunta4 = new Pregunta("El comercio brindo la informacion necesaria para la compra", new RespuestaPosible[]{respuestaPosible7, respuestaPosible8});
-    static final Pregunta pregunta5 = new Pregunta("Recomendo seis cuotas sin interes", new RespuestaPosible[]{respuestaPosible7, respuestaPosible8});
-    static final Pregunta pregunta6 = new Pregunta("Que plan uso", new RespuestaPosible[]{respuestaPosible13, respuestaPosible14, respuestaPosible15, respuestaPosible16, respuestaPosible3});
-    static final Pregunta pregunta7 = new Pregunta("Solicito prestamo en los ultimos 3 meses", new RespuestaPosible[]{respuestaPosible7, respuestaPosible8});
+    static final Pregunta pregunta3 = new Pregunta("Soluciono la consulta", new RespuestaPosible[]{respuestaPosible21, respuestaPosible22});
+    static final Pregunta pregunta4 = new Pregunta("El comercio brindo la informacion necesaria para la compra", new RespuestaPosible[]{respuestaPosible30, respuestaPosible31});
+    static final Pregunta pregunta5 = new Pregunta("Recomendo seis cuotas sin interes", new RespuestaPosible[]{respuestaPosible19, respuestaPosible20});
+    static final Pregunta pregunta6 = new Pregunta("Que plan uso", new RespuestaPosible[]{respuestaPosible41, respuestaPosible42, respuestaPosible43, respuestaPosible44});
+    static final Pregunta pregunta7 = new Pregunta("Solicito prestamo en los ultimos 3 meses", new RespuestaPosible[]{respuestaPosible24, respuestaPosible25});
     static final Pregunta pregunta8 = new Pregunta("Estimado prestamo", new RespuestaPosible[]{respuestaPosible9, respuestaPosible11, respuestaPosible12});
     static final Pregunta pregunta9 = new Pregunta("Cuantas cuotas", new RespuestaPosible[]{respuestaPosible13, respuestaPosible14, respuestaPosible15, respuestaPosible16});
 
@@ -108,51 +133,57 @@ public class CargaDeDatos {
     static final Encuesta encuesta3
             = new Encuesta("Encuesta prestamo", LocalDate.parse("2023-05-23"), new Pregunta[]{pregunta7, pregunta8, pregunta9});
 
-    //respuesta del cliente
+    //respuesta del cliente encuesta calidad del servicio
     static final RespuestaDeCliente respuesta1Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible1); //excelente
     static final RespuestaDeCliente respuesta2Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible7);//si recopmientda 
-    static final RespuestaDeCliente respuesta3Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible7);//si soluciono consulta
-    static final RespuestaDeCliente respuesta4Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible7); //si brindo info
-    static final RespuestaDeCliente respuesta5Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible8);//no recomendo 6 cuotas
-    static final RespuestaDeCliente respuesta6Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible13); //uso 3 ctas sin interes
-    static final RespuestaDeCliente respuesta7Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible7); //si solicito prestamos
+    static final RespuestaDeCliente respuesta3Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible22);//si soluciono consulta
+    //Encuieta de donde compro usando la tarjeta
+    static final RespuestaDeCliente respuesta4Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible31); //si brindo info
+    static final RespuestaDeCliente respuesta5Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible19);//no recomendo 6 cuotas
+    static final RespuestaDeCliente respuesta6Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible41); //uso 3 ctas sin interes
+    //Encuesta de prestamo
+    static final RespuestaDeCliente respuesta7Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible24); //si solicito prestamos
     static final RespuestaDeCliente respuesta8Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible9);//mayor a 100
-    static final RespuestaDeCliente respuesta9Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible12);//12 cuotas
-
-    static final RespuestaDeCliente respuesta10Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible5); //regular
+    static final RespuestaDeCliente respuesta9Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible12);//otro
+//Atencion al cliente
+    static final RespuestaDeCliente respuesta10Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible5); //mala
     static final RespuestaDeCliente respuesta11Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible8); //no recomieda
-    static final RespuestaDeCliente respuesta12Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible8);// no soluciono problema
-    static final RespuestaDeCliente respuesta13Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible8);//no brindo ingo
-    static final RespuestaDeCliente respuesta14Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible7); //si recomendo 6 cuptas
-    static final RespuestaDeCliente respuesta15Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible14);//usop 6 cuoptas
-    static final RespuestaDeCliente respuesta16Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible8); //no sol prest
-    static final RespuestaDeCliente respuesta17Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible7); //si solicito prestamos
-    static final RespuestaDeCliente respuesta18Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible12);//otro
-    static final RespuestaDeCliente respuesta19Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible5);// mala   
-    static final RespuestaDeCliente respuesta20Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible7);// si soluciono
-    static final RespuestaDeCliente respuesta21Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible8);// no recomienda
-    static final RespuestaDeCliente respuesta22Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible5);// mala
+    static final RespuestaDeCliente respuesta12Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible21);// no soluciono problema
+    //info comercio
+    static final RespuestaDeCliente respuesta13Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible30);//no brindo ingo
+    static final RespuestaDeCliente respuesta14Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible19); //si recomendo 6 cuptas
+    static final RespuestaDeCliente respuesta15Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible42);//usop 6 cuoptas
+    
+    static final RespuestaDeCliente respuesta16Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible25); //no sol prest
+    static final RespuestaDeCliente respuesta17Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible11); //si recominesa
+    static final RespuestaDeCliente respuesta18Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible15);// no soluiciono
+    
+    static final RespuestaDeCliente respuesta19Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible6);// muy mala   
+    static final RespuestaDeCliente respuesta20Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible8);// si soluciono
+    static final RespuestaDeCliente respuesta21Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible22);// no recomienda
+    static final RespuestaDeCliente respuesta22Cliente = new RespuestaDeCliente(LocalDate.parse("2023-05-19"), respuestaPosible14);// mala
 
     //Llamdas
 //    static final Llamada llamada11
 //            = new Llamada("operador222", "accionrequerida1", 1.2, true, "Sin observacion", new CambioEstado[]{cambioEstado1, cambioEstado2}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
 
     static final Llamada llamada2 = new Llamada("operador223", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado1, cambioEstado2}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada3 = new Llamada("operador224", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado3, cambioEstado4}, cliente1, new RespuestaDeCliente[]{respuesta4Cliente, respuesta5Cliente, respuesta6Cliente});
-    static final Llamada llamada4 = new Llamada("operador225", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado5, cambioEstado6}, cliente1, new RespuestaDeCliente[]{respuesta7Cliente, respuesta8Cliente, respuesta9Cliente});
-    static final Llamada llamada5 = new Llamada("operador226", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado7, cambioEstado8}, cliente1, new RespuestaDeCliente[]{respuesta10Cliente, respuesta11Cliente, respuesta12Cliente});
-    static final Llamada llamada6 = new Llamada("operador227", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado9, cambioEstado10}, cliente1, new RespuestaDeCliente[]{respuesta13Cliente, respuesta14Cliente, respuesta15Cliente});
-    static final Llamada llamada7 = new Llamada("operador228", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado11, cambioEstado12}, cliente1, new RespuestaDeCliente[]{respuesta16Cliente, respuesta17Cliente, respuesta18Cliente});
-    static final Llamada llamada9 = new Llamada("operador210", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado15, cambioEstado16}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada10 = new Llamada("operador211", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado18, cambioEstado18}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada11 = new Llamada("operador212", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado19, cambioEstado20}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada12 = new Llamada("operador213", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado20, cambioEstado21}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada13 = new Llamada("operador214", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado22, cambioEstado23}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada14 = new Llamada("operador215", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado24, cambioEstado25}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada15 = new Llamada("operador216", "accionrequerida1", 0.1, false, "sin encuesta enviada", new CambioEstado[]{cambioEstado26, cambioEstado27}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada16 = new Llamada("operador217", "accionrequerida1", 0.1, false, "sin encuesta enviada", new CambioEstado[]{cambioEstado28}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada17 = new Llamada("operador218", "accionrequerida1", 0.1, false, "sin encuesta enviada", new CambioEstado[]{cambioEstado29}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
-    static final Llamada llamada18 = new Llamada("operador219", "accionrequerida1", 0.1, false, "sin encuesta enviada", new CambioEstado[]{cambioEstado1}, cliente1, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
+    static final Llamada llamada3 = new Llamada("operador224", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado3, cambioEstado4}, cliente2, new RespuestaDeCliente[]{respuesta4Cliente, respuesta5Cliente, respuesta6Cliente});
+    static final Llamada llamada4 = new Llamada("operador225", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado5, cambioEstado6}, cliente3, new RespuestaDeCliente[]{respuesta7Cliente, respuesta8Cliente, respuesta9Cliente});
+    static final Llamada llamada5 = new Llamada("operador226", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado7, cambioEstado8}, cliente4, new RespuestaDeCliente[]{respuesta10Cliente, respuesta11Cliente, respuesta12Cliente});
+    static final Llamada llamada6 = new Llamada("operador227", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado9, cambioEstado10}, cliente5, new RespuestaDeCliente[]{respuesta13Cliente, respuesta14Cliente, respuesta15Cliente});
+    static final Llamada llamada7 = new Llamada("operador228", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado11, cambioEstado12}, cliente6, new RespuestaDeCliente[]{respuesta16Cliente, respuesta17Cliente, respuesta18Cliente});
+    static final Llamada llamada9 = new Llamada("operador210", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado15, cambioEstado16}, cliente7, new RespuestaDeCliente[]{respuesta19Cliente, respuesta20Cliente, respuesta21Cliente});
+    
+    static final Llamada llamada10 = new Llamada("operador211", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado18, cambioEstado18}, cliente8, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
+    static final Llamada llamada11 = new Llamada("operador212", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado19, cambioEstado20}, cliente8, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
+    static final Llamada llamada12 = new Llamada("operador213", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado20, cambioEstado21}, cliente8, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
+    static final Llamada llamada13 = new Llamada("operador214", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado22, cambioEstado23}, cliente8, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
+    static final Llamada llamada14 = new Llamada("operador215", "accionrequerida1", 0.1, true, "Sin observacion", new CambioEstado[]{cambioEstado24, cambioEstado25}, cliente8, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
+    static final Llamada llamada15 = new Llamada("operador216", "accionrequerida1", 0.1, false, "sin encuesta enviada", new CambioEstado[]{cambioEstado26, cambioEstado27}, cliente8, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
+    static final Llamada llamada16 = new Llamada("operador217", "accionrequerida1", 0.1, false, "sin encuesta enviada", new CambioEstado[]{cambioEstado28}, cliente8, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
+    static final Llamada llamada17 = new Llamada("operador218", "accionrequerida1", 0.1, false, "sin encuesta enviada", new CambioEstado[]{cambioEstado29}, cliente8, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
+    static final Llamada llamada18 = new Llamada("operador219", "accionrequerida1", 0.1, false, "sin encuesta enviada", new CambioEstado[]{cambioEstado1}, cliente8, new RespuestaDeCliente[]{respuesta1Cliente, respuesta2Cliente, respuesta3Cliente});
 
 
 

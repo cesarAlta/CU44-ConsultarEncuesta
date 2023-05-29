@@ -5,6 +5,7 @@
 package Models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,19 +46,26 @@ public class Pregunta {
             if (Objects.equals(rp, respPosible)) {
                 esRespuestaDelCliente = true;
             }
-        }
+        }        
         return esRespuestaDelCliente;
     }
 
-    public String getDescripcion(RespuestaPosible respPosSeleccionada) {
-        String descRtaPosible = null;
+    public  String getDescripcion(RespuestaPosible respPosSeleccionada) {
+        String pregResp = null;
         for (RespuestaPosible rp : respuesta) {
             if (rp.equals(respPosSeleccionada)) {
-                descRtaPosible = rp.getDescripcionRta();
+                 pregResp = "¿"+ getPregunta()+"? "+"--> "+respPosSeleccionada.getDescripcionRta();
             }
-
         }
-        return descRtaPosible;
+        return pregResp;
 
+    }
+
+   public boolean esMiPregunta(RespuestaPosible resPosible) {
+       for(RespuestaPosible rp : getRespuestaPosible()){
+           if(rp.equals(resPosible))
+               return true;
+       }
+       return false;
     }
 }

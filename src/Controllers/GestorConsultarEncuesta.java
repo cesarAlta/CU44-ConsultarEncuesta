@@ -61,7 +61,13 @@ public class GestorConsultarEncuesta {
                 }
             }
         }
-        controller.solicitarSeleccionLlamada(hasMostrarLLamadas);
+        //CASO ALTERNATIVO NO HAY LLAMADAS CON CONCUESTAS
+        if(hasMostrarLLamadas.isEmpty()){
+            controller.mostrarAlertaErrorCsv("No hay llamadas con encuesta respondidas para el periodo "+ inicio.toString()+" - "+fin.toString());
+        }else{
+             controller.solicitarSeleccionLlamada(hasMostrarLLamadas);
+        }
+       
     }
 
     public void tomarSeleccionLlamada(Llamada llamadaSel) {

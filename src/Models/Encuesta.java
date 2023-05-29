@@ -5,6 +5,7 @@
 package Models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -51,18 +52,33 @@ public class Encuesta {
     }
 //fin getter and setter
 
-    public HashMap<String,String> getDescripcionEncuesta(List<RespuestaPosible> respPosible) {
-        HashMap<String,String> desEncuesta = new HashMap<>();      
+    public List<String> getDescripcionEncuesta(List<RespuestaPosible> respPosible) {
+        List<String> desEncuesta = new ArrayList<>();
 
-        for (RespuestaPosible resPosible : respPosible) {
-             for (Pregunta p : preguntas) {
-            String descRta = p.getDescripcion(resPosible);
-            if(descRta!=null){                
-                desEncuesta.put(p.getPregunta(), descRta);
-            }
+        for (Pregunta p : getPregunta()) {           
+            for (RespuestaPosible resPosible : respPosible) {
+                String descRta = p.getDescripcion(resPosible);
+                if (descRta != null) {
+                    if(desEncuesta.isEmpty())
+                        desEncuesta.add(getDescripcion());
+                    desEncuesta.add(descRta);
+                }
+                descRta=null;
+             }
         }
-        }
-       
+
+//     
+//        for (RespuestaPosible resPosible : respPosible) {
+//            System.out.println(resPosible.getDescripcion());
+//             for (Pregunta p : preguntas) {
+//            String descRta = p.getDescripcion(resPosible);
+//            if(descRta!=null){  
+//                System.out.println(p.getPregunta());
+//                desEncuesta.put(p.getPregunta(), descRta);
+//            }
+//        }
+//        }
+//       
         return desEncuesta;
 
     }

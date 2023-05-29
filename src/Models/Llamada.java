@@ -5,9 +5,7 @@
 package Models;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -145,6 +143,7 @@ public class Llamada {
     }
 
     public List<RespuestaPosible> getResupestas() {
+//         "LOOP DE RESOUESTA DE CLIENTE" se obtiene y retorna las respuestas posibles seleccionadas
         List<RespuestaPosible> respPosible = new ArrayList<>();
         for (RespuestaDeCliente resCli : respuestaDeEncuesta) {
             respPosible.add(resCli.getRespuestaSeleccionada());
