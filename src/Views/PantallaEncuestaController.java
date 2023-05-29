@@ -10,15 +10,18 @@ import javafx.fxml.Initializable;
 import Controllers.GestorConsultarEncuesta;
 import Models.Llamada;
 import java.time.LocalDate;
-import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -34,27 +37,24 @@ public class PantallaEncuestaController implements Initializable {
     @FXML
     private DatePicker datePickFin;
     @FXML
-    private Button btnBuscarLLamadas;
+    private ListView<String> listViewLlamadas;
     @FXML
-    private TableView<Llamada> tabLlamadas;
+    private Label labNombreDelCliente;
     @FXML
-    private ListView listLlamadas;
+    private Label labEstadoLlamada;
     @FXML
-    private TextArea descEncuesta;
+    private Label labDuraacionLlamada;
     @FXML
-    private Label nombreDelCliente;
+    private Label labTitulonEncuesta;
     @FXML
-    private Label estadoLlamada;
+    private ListView<String> lsitViewPregYresp;
     @FXML
-    private Label duraacionLlamada;
+    private AnchorPane anchorPaneSelleccionLlamada;
     @FXML
-    private Label titulonEncuesta;
-    @FXML
-    private ListView lsitPregYresp;
-    @FXML
-    private AnchorPane selleccionLlamada;
-    @FXML
-    private AnchorPane   detalleEncuesta;
+    private AnchorPane anchorPaneDetalleEncuesta;
+
+    public PantallaEncuestaController() {
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,7 +62,7 @@ public class PantallaEncuestaController implements Initializable {
         try {
             gestorConsultarEncuesta.opConsultarEncuesta();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
 
     }
@@ -76,71 +76,78 @@ public class PantallaEncuestaController implements Initializable {
     public void tomarSeleccionDePeriodo() {
         LocalDate fechaInicioPeriodo = datePickInicio.getValue();
         LocalDate fechaFinPeriodo = (datePickFin.getValue());
-
         gestorConsultarEncuesta.tomarSeleccionFecaInicioPerioso(fechaInicioPeriodo, fechaFinPeriodo);
-
     }
 
     public void solicitarSeleccionLlamada(HashMap<Llamada, String> llamadasConRespuestas) {
-        listLlamadas.setItems(FXCollections.observableArrayList(llamadasConRespuestas.values()));
-
-        listLlamadas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            String choice = (String) listLlamadas.getSelectionModel().getSelectedItem();
+        listViewLlamadas.setItems(FXCollections.observableArrayList(llamadasConRespuestas.values()));
+        
+        listViewLlamadas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            String choice = (String) listViewLlamadas.getSelectionModel().getSelectedItem();
             for (Map.Entry<Llamada, String> llamda : llamadasConRespuestas.entrySet()) {
                 if (choice.equals(llamda.getValue())) {
                     tomarSeleccionLlamada(llamda.getKey());
                 }
             }
-
         });
     }
 
-    public void tomarSeleccionLlamada(Llamada llamadaSel) {
+    public void tomarSeleccionLlamada(Llamada llamadaSel) {        
         gestorConsultarEncuesta.tomarSeleccionLlamada(llamadaSel);
-        detalleEncuesta.setVisible(true);
-        selleccionLlamada.setVisible(false);
+        anchorPaneDetalleEncuesta.setVisible(true);
+        anchorPaneSelleccionLlamada.setVisible(false);
 
     }
 
     public void mostrarDatosDeLaEncuesta(List<String> res) {
-        this.nombreDelCliente.setText(res.get(0));
-        this.estadoLlamada.setText(res.get(1));
-        this.duraacionLlamada.setText(res.get(2));
-        this.titulonEncuesta.setText(res.get(3));
-        
-      List<String> pregYres = new ArrayList<String>();
-      
+        this.labNombreDelCliente.setText(res.get(0));
+        this.labEstadoLlamada.setText(res.get(1));
+        this.labDuraacionLlamada.setText(res.get(2));
+        this.labTitulonEncuesta.setText(res.get(3));
+
+        List<String> pregYres = new ArrayList<>();
+
         for (int i = 4; i < res.size(); i++) {
-          pregYres.add(res.get(i));
-               
+            pregYres.add(res.get(i));
+
         }
-        lsitPregYresp.setItems(FXCollections.observableArrayList(pregYres));        
+        lsitViewPregYresp.setItems(FXCollections.observableArrayList(pregYres));
 
     }
-    public void cerrarDetalleEncuesta(){
-        this.detalleEncuesta.setVisible(false);
-        this.selleccionLlamada.setVisible(true);
-    
+
+    public void cerrarDetalleEncuesta() {
+        this.anchorPaneDetalleEncuesta.setVisible(false);
+        this.anchorPaneSelleccionLlamada.setVisible(true);
+
     }
-    public void generarCSV(){
+
+    public void tomarSeleccionDeVisualizacioon() {
         gestorConsultarEncuesta.generarCSV();
-        
+
     }
 
     public void informarAvisoDeGeneracionExitosa() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setHeaderText(null);
-    alert.setTitle("Info");
-    alert.setContentText("El archivo se genero correctamente!");
-    alert.showAndWait();
+        alert.setHeaderText(null);
+        alert.setTitle("Info");
+        alert.setContentText("El archivo se genero correctamente!");
+        alert.showAndWait();
     }
 
     public void mostrarAlertaErrorCsv(String par) {
-         Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setHeaderText(null);
-    alert.setTitle("Error!");
-    alert.setContentText(par);
-    alert.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setTitle("Error!");
+        alert.setContentText(par);
+        alert.showAndWait();
+    }
+
+    @FXML
+    public void salir(ActionEvent e) {
+        Node source = (Node) e.getSource();     //Me devuelve el elemento al que hice click
+        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
+        stage.close();
+
     }
 
 }
